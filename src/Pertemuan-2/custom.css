@@ -1,0 +1,122 @@
+/* =========================
+   Import Font
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
+/* =========================
+   Global Style
+========================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0f2027, #000000);
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #e0e0e0;
+}
+
+
+/* =========================
+   Card Container
+========================= */
+.card {
+    max-width: 600px;
+    width: 100%;
+
+    padding: 35px;
+
+    background: rgba(10, 10, 10, 0.85);
+    border-radius: 16px;
+    border: 1px solid #00ffff;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00ffff44,
+        inset 0 0 10px #00ffff22;
+
+    transition: all 0.3s ease;
+}
+
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 0 15px #00ffff,
+        0 0 40px #00ffff,
+        0 0 60px #00ffff55;
+}
+
+
+/* =========================
+   Typography
+========================= */
+
+/* Title */
+h1 {
+    text-align: justify;
+    font-size: 30px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+    color: #00ffff;
+
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 15px #00ffff,
+        0 0 30px #00ffff;
+}
+
+
+/* Paragraph */
+p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: #cfcfcf;
+}
+
+
+/* =========================
+   Divider
+========================= */
+hr {
+    width: 100px;
+    height: 3px;
+
+    margin: 20px auto;
+
+    border: none;
+    background: #00ffff;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff;
+}
+
+
+/* =========================
+   Small Text / Greeting
+========================= */
+small {
+    display: block;
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #00ffff;
+    font-style: italic;
+    letter-spacing: 1px;
+
+    text-shadow: 0 0 8px #00ffff;
+}
