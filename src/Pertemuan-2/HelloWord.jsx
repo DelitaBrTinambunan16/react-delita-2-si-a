@@ -40,7 +40,7 @@ function QuoteText() {
 }
 function GreetingBinjai(){
     return(
-     <small className="card"> Salam dari binjai</small>
+     <small> Salam dari binjai</small>
     )
 }
 
