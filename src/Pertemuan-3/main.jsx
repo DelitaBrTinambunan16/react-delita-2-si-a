@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import Tailwindcss from "./TailWind";
+// import Tailwindcss from "./ailWind";
 import './tailwind.css';
 import UserForm from "./UserForm";
 import HitungGajiForm from "./HitungGajiForm";
