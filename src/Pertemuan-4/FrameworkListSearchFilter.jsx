@@ -2,27 +2,39 @@ import { useState, useMemo } from "react";
 import frameworkData from "./framework.json";
 
 export default function FrameworkListSearchFilter() {
-  /** Deklarasi state **/
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
+  /** 1. State Tunggal (Bersih & Efisien) **/
+  const [dataForm, setDataForm] = useState({
+    searchTerm: "",
+    selectedTag: "",
+  });
 
+  /** 2. Handle perubahan input **/
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setDataForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  /** Logika Tag Unik untuk Dropdown **/
+  /** 3. Logika Tag Unik **/
   const allTags = useMemo(() => {
     const tags = new Set();
     frameworkData.forEach((item) => item.tags.forEach((t) => tags.add(t)));
     return Array.from(tags).sort();
   }, []);
 
-  /** Logika Search & Filter **/
+  /** 4. Logika Search & Filter (Tanpa Typo) **/
   const filteredFrameworks = frameworkData.filter((framework) => {
-    const _searchTerm = searchTerm.toLowerCase();
-    const matchesSearch =
-      framework.name.toLowerCase().includes(_searchTerm) ||
-      framework.description.toLowerCase().includes(_searchTerm);
-      framework.details.developer.toLocaleLowerCase().includes(_searchTerm)
+    const s = dataForm.searchTerm.toLowerCase();
+    const t = dataForm.selectedTag;
 
-    const matchesTag = selectedTag ? framework.tags.includes(selectedTag) : true;
+    const matchesSearch =
+      framework.name.toLowerCase().includes(s) ||
+      framework.description.toLowerCase().includes(s) ||
+      framework.details.developer.toLowerCase().includes(s);
+
+    const matchesTag = t === "" || framework.tags.includes(t);
 
     return matchesSearch && matchesTag;
   });
@@ -30,10 +42,11 @@ export default function FrameworkListSearchFilter() {
   return (
     <div className="min-h-screen bg-[#fff5f7] p-8 font-sans text-gray-800">
       <div className="max-w-6xl mx-auto">
+        
         {/* Header Section */}
         <div className="mb-12 text-center">
           <h1 className="text-5xl font-black text-pink-500 mb-4 tracking-tight drop-shadow-sm">
-            🌸 Pinky Frameworks 🌸
+            🌸 Frameworks Delita 🌸
           </h1>
           <p className="text-pink-400 font-medium text-lg">
             Temukan framework impianmu dengan sentuhan warna yang lembut.
@@ -45,23 +58,22 @@ export default function FrameworkListSearchFilter() {
           <div className="relative w-full md:w-1/2">
             <input
               type="text"
-              placeholder="Cari framework..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-4 pl-12 bg-white border-2 border-pink-100 rounded-2xl shadow-sm 
-                         focus:border-pink-300 focus:ring-4 focus:ring-pink-100 outline-none transition-all
-                         placeholder:text-pink-200"
+              name="searchTerm" 
+              placeholder="Cari framework atau developer..."
+              value={dataForm.searchTerm}
+              onChange={handleChange}
+              className="w-full p-4 pl-12 bg-white border-2 border-pink-100 rounded-2xl shadow-sm focus:border-pink-300 focus:ring-4 focus:ring-pink-100 outline-none transition-all placeholder:text-pink-200"
             />
             <span className="absolute left-4 top-4 text-xl">🔍</span>
           </div>
 
           <div className="relative w-full md:w-1/4">
             <select
-              value={selectedTag}
-              onChange={(e) => setSelectedTag(e.target.value)}
-              className="w-full p-4 bg-white border-2 border-pink-100 rounded-2xl shadow-sm 
-                         focus:border-pink-300 focus:ring-4 focus:ring-pink-100 outline-none 
-                         transition-all cursor-pointer appearance-none text-pink-600 font-semibold"
+            type = "text"
+              name="selectedTag" 
+              value={dataForm.selectedTag}
+              onChange={handleChange}
+              className="w-full p-4 bg-white border-2 border-pink-100 rounded-2xl shadow-sm focus:border-pink-300 focus:ring-4 focus:ring-pink-100 outline-none transition-all cursor-pointer appearance-none text-pink-600 font-semibold"
             >
               <option value="">Semua Kategori</option>
               {allTags.map((tag) => (
@@ -76,13 +88,7 @@ export default function FrameworkListSearchFilter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredFrameworks.length > 0 ? (
             filteredFrameworks.map((item) => (
-              <div
-                key={item.id}
-                className="group relative bg-white border border-pink-50 p-8 rounded-[2.5rem] shadow-sm 
-                           hover:shadow-2xl hover:shadow-pink-200/50 hover:-translate-y-3 
-                           transition-all duration-500 ease-out flex flex-col overflow-hidden"
-              >
-                {/* Decorative Soft Pink Bubble */}
+              <div key={item.id} className="group relative bg-white border border-pink-50 p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-pink-200/50 hover:-translate-y-3 transition-all duration-500 ease-out flex flex-col overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-32 h-32 bg-pink-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
 
                 <div className="relative z-10">
@@ -94,7 +100,7 @@ export default function FrameworkListSearchFilter() {
                   </p>
                 </div>
 
-                {/* Developer Info */}
+                {/* Developer & Link */}
                 <div className="mt-auto pt-6 relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-xs italic font-bold text-pink-500">
@@ -110,9 +116,7 @@ export default function FrameworkListSearchFilter() {
                     href={item.details.officialWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full py-3 px-4 bg-pink-500 text-white font-black rounded-2xl
-                               shadow-lg shadow-pink-200 hover:bg-pink-600 hover:shadow-pink-300 
-                               active:scale-95 transition-all duration-300 text-xs uppercase tracking-widest"
+                    className="flex items-center justify-center w-full py-3 px-4 bg-pink-500 text-white font-black rounded-2xl shadow-lg shadow-pink-200 hover:bg-pink-600 hover:shadow-pink-300 active:scale-95 transition-all duration-300 text-xs uppercase tracking-widest"
                   >
                     Kunjungi Situs →
                   </a>
@@ -121,10 +125,7 @@ export default function FrameworkListSearchFilter() {
                 {/* Tags */}
                 <div className="mt-6 flex flex-wrap gap-2 relative z-10">
                   {item.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="bg-white border border-pink-100 text-pink-400 px-3 py-1 text-[9px] font-black uppercase rounded-full shadow-sm"
-                    >
+                    <span key={index} className="bg-white border border-pink-100 text-pink-400 px-3 py-1 text-[9px] font-black uppercase rounded-full shadow-sm">
                       #{tag}
                     </span>
                   ))}
