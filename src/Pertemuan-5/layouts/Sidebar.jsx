@@ -1,54 +1,91 @@
-import { IoHome, IoCart, IoPeople } from "react-icons/io5";
+import { FaHome, FaClipboardList, FaFileAlt } from "react-icons/fa";
+import { useState } from "react";
 
-export default function Sidebar() {
+const Sidebar = () => {
+  const [active, setActive] = useState("dashboard");
+
   return (
-    <div className="w-72 bg-white border-r border-garis flex flex-col justify-between p-6 h-full font-barlow">
-      <div>
-        <div>
-          <h1 className="font-poppins text-3xl font-semibold">
-            Sedap<span className="text-hijau">.</span>
-          </h1>
-          <p className="text-teks-samping text-sm mt-1">Modern Admin Dashboard</p>
-        </div>
+    <div className="w-64 bg-white min-h-screen shadow p-4 flex flex-col">
 
-        <div className="mt-14 space-y-3">
-          <button className="w-full flex items-center gap-3 p-3 rounded-2xl text-teks hover:bg-latar transition">
-            <IoHome className="text-xl" />
-            Dashboard
-          </button>
-          <button className="w-full flex items-center gap-3 p-3 rounded-2xl text-teks hover:bg-latar transition">
-            <IoCart className="text-xl" />
-            Orders
-          </button>
-          <button className="w-full flex items-center gap-3 p-3 rounded-2xl text-teks hover:bg-latar transition">
-            <IoPeople className="text-xl" />
-            Customers
-          </button>
-        </div>
+      {/* LOGO */}
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold">
+          Sedap<span className="text-green-500">.</span>
+        </h1>
+        <p className="text-gray-400 text-sm">Modern Admin Dashboard</p>
       </div>
 
-      <div>
-        <div className="rounded-[2rem] bg-hijau text-white p-6 space-y-4">
-          <p className="text-sm font-semibold leading-6">
-            Please organize your menu through button below!
-          </p>
-          <div className="flex items-center justify-between gap-4">
-            <button className="bg-white text-black text-sm px-4 py-2 rounded-full">
+      {/* MENU */}
+      <ul className="space-y-4">
+        
+        <li
+          onClick={() => setActive("dashboard")}
+          className={`flex items-center gap-2 cursor-pointer ${
+            active === "dashboard"
+              ? "text-green-500 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          <FaHome className="mr-2 text-xl" /> Dashboard
+        </li>
+
+        <li
+          onClick={() => setActive("order")}
+          className={`flex items-center gap-2 cursor-pointer ${
+            active === "order"
+              ? "text-green-500 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          <FaClipboardList className="mr-2 text-xl" /> Order List
+        </li>
+
+        <li
+          onClick={() => setActive("detail")}
+          className={`flex items-center gap-2 cursor-pointer ${
+            active === "detail"
+              ? "text-green-500 font-semibold"
+              : "text-gray-500"
+          }`}
+        >
+          <FaFileAlt className="mr-2 text-xl" /> Order Detail
+        </li>
+
+      </ul>
+
+      {/* FOOTER */}
+      <div className="mt-auto">
+
+        {/* CARD */}
+        <div className="mt-10 bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between">
+          <div>
+            <p className="text-sm mb-3">
+              Please organize your menus through button below!
+            </p>
+            <button className="bg-white text-green-500 px-3 py-1 rounded">
               + Add Menus
             </button>
-            <img
-              src="https://i.pravatar.cc/40?img=32"
-              className="w-10 h-10 rounded-full border-2 border-white"
-              alt="Avatar"
-            />
           </div>
+
+    <img
+  src="https://i.pravatar.cc/40"
+  alt="profile"
+  className="w-10 h-10 rounded-full"
+/>
         </div>
 
-        <div className="text-sm text-teks-samping mt-6 leading-5">
+        <p className="text-gray-400 text-sm mt-4 font-semibold">
           Sedap Restaurant Admin Dashboard
-          <div className="mt-2">© 2026 All Right Reserved</div>
-        </div>
+        </p>
+
+        <p className="text-gray-400 text-xs">
+          © 2025 All Rights Reserved
+        </p>
+
       </div>
+
     </div>
   );
-}
+};
+
+export default Sidebar;

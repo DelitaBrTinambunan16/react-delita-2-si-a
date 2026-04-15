@@ -1,43 +1,78 @@
-import { FaSearch, FaBell, FaChartLine, FaCog } from "react-icons/fa";
+import { useState } from "react";
+import { FaBell, FaSearch } from "react-icons/fa";
+import { FcAreaChart } from "react-icons/fc";
+import { SlSettings } from "react-icons/sl";
 
 export default function Header() {
   return (
-    <div className="h-24 bg-white border-b border-garis flex items-center justify-between px-8 font-barlow">
-      <div className="flex items-center gap-5 w-full max-w-3xl">
-        <div className="flex items-center gap-3 bg-latar rounded-full px-5 py-3 w-full shadow-sm border border-white">
-          <FaSearch className="text-teks-samping text-lg" />
-          <input
-            className="bg-transparent outline-none w-full text-sm text-teks"
-            placeholder="Search Here..."
-          />
-        </div>
+    <div
+      id="header-container"
+      className="flex justify-between items-center p-4 bg-white shadow"
+    >
+      
+      {/* SEARCH BAR */}
+      <div id="search-bar" className="relative w-full max-w-lg">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search Here..."
+          className="border border-gray-100 p-2 pr-10 bg-white w-full max-w-lg rounded-md outline-none"
+        />
+        <FaSearch
+          id="search-icon"
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-300"
+        />
       </div>
 
-      <div className="flex items-center gap-3">
-        <button className="relative w-12 h-12 rounded-full bg-sky-500 text-white shadow-sm flex items-center justify-center hover:bg-sky-600">
+      {/* ICON & PROFILE */}
+      <div id="icons-container" className="flex items-center space-x-4">
+        
+        {/* NOTIFICATION */}
+        <div
+          id="notification-icon"
+          className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer"
+        >
           <FaBell />
-          <span className="absolute -top-1 -right-1 inline-flex items-center justify-center rounded-full bg-white text-sky-500 text-[10px] font-semibold w-5 h-5">
+          <span
+            id="notification-badge"
+            className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-200 rounded-full px-2 py-1 text-xs"
+          >
             50
           </span>
-        </button>
-        <button className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 shadow-sm flex items-center justify-center hover:bg-sky-200">
-          <FaChartLine />
-        </button>
-        <button className="w-12 h-12 rounded-full bg-pink-100 text-pink-600 shadow-sm flex items-center justify-center hover:bg-pink-200">
-          <FaCog />
-        </button>
-
-        <div className="flex items-center gap-3">
-          <div className="text-right">
-            <div className="text-xs text-teks-samping">Hello,</div>
-            <div className="text-sm font-semibold">Delita Br Tinambunan</div>
-          </div>
-          <img
-            src="https://i.pravatar.cc/40?img=32"
-            className="w-12 h-12 rounded-full border-2 border-latar"
-            alt="Avatar"
-          />
         </div>
+
+        {/* CHART */}
+        <div
+          id="chart-icon"
+          className="p-3 bg-blue-100 rounded-2xl cursor-pointer"
+        >
+          <FcAreaChart />
+        </div>
+
+        {/* SETTINGS */}
+        <div
+          id="settings-icon"
+          className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer"
+        >
+          <SlSettings />
+        </div>
+
+        {/* PROFILE */}
+        <div
+          id="profile-container"
+          className="flex items-center space-x-4 border-l pl-4 border-gray-300"
+        >
+          <span id="profile-text" className="text-sm">
+            Hello, <b>Delita Br Tinambunan</b>
+          </span>
+
+    <img
+  src="https://i.pravatar.cc/40"
+  alt="profile"
+  className="w-10 h-10 rounded-full"
+/>
+        </div>
+
       </div>
     </div>
   );
