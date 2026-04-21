@@ -1,32 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Sidebar from "./Layouts/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import Header from "./Layouts/Header";
+import "./assets/tailwind.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <div className="app">
-      <div className="logos">
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
-      <h1>Vite + React</h1>
-
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div id="app-container" className="bg-gray-100 min-h-screen flex">
+      <div id="layout-wrapper" className="flex flex-row flex-1">
+        <Sidebar />
+        <div id="main-content" className="flex-1 p-4">
+          <Header />
+          <Dashboard />
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

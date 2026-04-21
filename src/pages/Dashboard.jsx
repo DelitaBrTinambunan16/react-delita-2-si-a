@@ -12,15 +12,7 @@ import {
 
 const Dashboard = () => {
   return (
-    <div className="flex bg-gray-100 min-h-screen">
-      {/* <Sidebar /> */}
-
-      <div className="flex-1">
-        {/* <Header /> */}
-
-        <div className="p-6">
-          <PageHeader />
-
+    <div className="flex bg-gray-100">
           {/* CARDS */}
           <div className="grid grid-cols-5 gap-4 mt-6">
 
@@ -86,23 +78,8 @@ const Dashboard = () => {
 
           </div>
 
-          {/* PIE CHART  */}
-          {/*
-          <div className="bg-white p-4 rounded-lg shadow mt-6">
-            <h2 className="font-semibold mb-4">Pie Chart</h2>
-          </div>
-          */}
-
-          {/* LINE CHART (DIKOMENTARI) */}
-          {/*
-          <div className="bg-white p-4 rounded-lg shadow mt-6">
-            <h2 className="font-semibold">Chart Order</h2>
-          </div>
-          */}
-
         </div>
-      </div>
-    </div>
+ 
   );
 };
 
