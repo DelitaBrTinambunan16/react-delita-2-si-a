@@ -1,12 +1,18 @@
 import { FaHome, FaClipboardList, FaFileAlt } from "react-icons/fa";
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-const Sidebar = () => {
-  const [active, setActive] = useState("dashboard");
+export default function Sidebar(){
+
+    const menuClass = ({ isActive }) =>
+        `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+        ${isActive ? 
+            "text-hijau bg-green-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`;
 
   return (
     <div className="w-64 bg-white min-h-screen shadow p-4 flex flex-col">
-
       {/* LOGO */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold">
@@ -17,45 +23,39 @@ const Sidebar = () => {
 
       {/* MENU */}
       <ul className="space-y-4">
-        
-        <li
-          onClick={() => setActive("dashboard")}
-          className={`flex items-center gap-2 cursor-pointer ${
-            active === "dashboard"
-              ? "text-green-500 font-semibold"
-              : "text-gray-500"
-          }`}
-        >
-          <FaHome className="mr-2 text-xl" /> Dashboard
+        <li>
+          <NavLink
+            onClick={() => setActive("Dashboard")}
+            to="/"
+            className={menuClass}
+          >
+            <FaClipboardList /> Dashboard
+          </NavLink>
         </li>
 
-        <li
-          onClick={() => setActive("order")}
-          className={`flex items-center gap-2 cursor-pointer ${
-            active === "order"
-              ? "text-green-500 font-semibold"
-              : "text-gray-500"
-          }`}
-        >
-          <FaClipboardList className="mr-2 text-xl" /> Order List
+        <li>
+          <NavLink
+            onClick={() => setActive("Orders")}
+            to="/orders"
+            className={menuClass}
+          >
+            <FaClipboardList /> Order List
+          </NavLink>
         </li>
 
-        <li
-          onClick={() => setActive("detail")}
-          className={`flex items-center gap-2 cursor-pointer ${
-            active === "detail"
-              ? "text-green-500 font-semibold"
-              : "text-gray-500"
-          }`}
-        >
-          <FaFileAlt className="mr-2 text-xl" /> Order Detail
+        <li>
+          <NavLink
+            onClick={() => setActive("customers")}
+            to="/customers"
+            className={menuClass}
+          >
+            <FaClipboardList /> Customers Detail
+          </NavLink>
         </li>
-
       </ul>
 
       {/* FOOTER */}
       <div className="mt-auto">
-
         {/* CARD */}
         <div className="mt-10 bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center justify-between">
           <div>
@@ -67,25 +67,19 @@ const Sidebar = () => {
             </button>
           </div>
 
-    <img
-  src="https://i.pravatar.cc/40"
-  alt="profile"
-  className="w-10 h-10 rounded-full"
-/>
+          <img
+            src="https://i.pravatar.cc/40"
+            alt="profile"
+            className="w-10 h-10 rounded-full"
+          />
         </div>
 
         <p className="text-gray-400 text-sm mt-4 font-semibold">
           Sedap Restaurant Admin Dashboard
         </p>
 
-        <p className="text-gray-400 text-xs">
-          © 2025 All Rights Reserved
-        </p>
-
+        <p className="text-gray-400 text-xs">© 2025 All Rights Reserved</p>
       </div>
-
     </div>
   );
 };
-
-export default Sidebar;

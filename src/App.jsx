@@ -3,6 +3,10 @@ import Sidebar from "./Layouts/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Header from "./Layouts/Header";
 import "./assets/tailwind.css";
+import { Routes, Route } from "react-router-dom";
+import Orders from "./pages/Orders";
+import Customers from "./pages/Customers";
+import NotFound from "./pages/NotFound";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,7 +17,14 @@ function App() {
         <Sidebar />
         <div id="main-content" className="flex-1 p-4">
           <Header />
-          <Dashboard />
+   
+          {/* <Dashboard /> */}
+          <Routes>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/customers" element={<Customers />} />
+          </Routes>
         </div>
       </div>
     </div>
