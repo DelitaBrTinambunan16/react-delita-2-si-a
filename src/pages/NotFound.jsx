@@ -5,7 +5,7 @@ const NotFound = () => {
     <ErrorPage 
       code="404"
       message="Halaman Tidak Ditemukan"
-      image="/img/4040-Error.png"
+      image="/img/404-Error.png"
     />
   );
 };

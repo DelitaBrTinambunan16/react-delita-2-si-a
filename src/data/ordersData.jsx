@@ -70,7 +70,6 @@ const orders = [
     orderDate: "2026-04-10"
   },
 
-  // lanjut sampai 30
   {
     orderId: "ORD011",
     customerName: "Kevin",

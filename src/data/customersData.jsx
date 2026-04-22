@@ -21,7 +21,6 @@ const customers = [
     loyalty: "Bronze"
   },
 
-  // lanjut sampai 30
   {
     customerId: "CUS004",
     customerName: "Dewi",

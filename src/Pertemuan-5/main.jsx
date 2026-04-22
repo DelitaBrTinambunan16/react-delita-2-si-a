@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM, { createRoot } from "react-dom/client";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./Pages/Dashboard";
 import "./assets/tailwind.css";
 import Sidebar from "./Layouts/Sidebar";
-import Header from "../Layouts/Header";
+import Header from "../layouts/Header";
 
 createRoot(document.getElementById("root")).render(
   <div id="app-container" className="bg-gray-100 min-h-screen flex">
@@ -14,5 +14,5 @@ createRoot(document.getElementById("root")).render(
         <Dashboard />
       </div>
     </div>
-  </div>,
+  </div>
 );
