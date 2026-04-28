@@ -1,20 +1,37 @@
-import { useState } from "react";
-import Dashboard from "./pages/Dashboard";
+import React from "react";
+// import Dashboard from "./pages/Dashboard";
 import "./assets/tailwind.css";
 import { Routes, Route } from "react-router-dom";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
-import NotFound from "./pages/NotFound";
-import ErrorPage from "./components/ErrorPage";
-import MainLayout from "./layouts/MainLayout";
-import AuthLayout from "./layouts/AuthLayout";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Forgot from "./pages/auth/Forgot";
+// import Orders from "./pages/Orders";
+// import Customers from "./pages/Customers";
+// import NotFound from "./pages/NotFound";
+// import ErrorPage from "./components/ErrorPage";
+// AuthLayout
+// import AuthLayout from "./layouts/AuthLayout";
+// import Login from "./pages/auth/Login";
+// import Register from "./pages/auth/Register";
+// import Forgot from "./pages/auth/Forgot";
+import Loading from "./components/Loading";
+import { Suspense } from "react";
+// import MainLayout from "./layouts/MainLayout";
+
+
 
 
 function App() {
+  const Dashboard = React.lazy(() => import("./pages/Dashboard"))
+  const Customers = React.lazy(() => import("./pages/Customers"))
+  const Orders = React.lazy(() => import("./pages/Orders"))
+  const NotFound = React.lazy(() => import("./pages/NotFound"))
+  const Login = React.lazy(() => import("./pages/auth/Login"))
+  const Register = React.lazy(() => import("./pages/auth/Register"))
+  const Forgot = React.lazy(() => import("./pages/auth/Forgot"))
+  const ErrorPage = React.lazy(() => import("./components/ErrorPage"))
+  const MainLayout = React.lazy(() => import("./layouts/MainLayout"))
+  const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"))
+
   return (
+    <Suspense fallback={<Loading />}>
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Dashboard />} />
@@ -59,6 +76,7 @@ function App() {
             <Route path="/forgot" element={<Forgot/>} />
         </Route>     
     </Routes>
+    </Suspense>
   );
 }
 
