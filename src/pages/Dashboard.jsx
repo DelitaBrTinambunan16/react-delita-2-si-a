@@ -1,5 +1,3 @@
-import Sidebar from "../layouts/Sidebar";
-import Header from "../layouts/Header";
 import PageHeader from "../components/PageHeader";
 
 import {
@@ -16,7 +14,6 @@ const Dashboard = () => {
       
       <div className="flex-1 p-4">
         
-        {/* ✅ PageHeader (WAJIB P6) */}
         <PageHeader 
           title="Dashboard"
           breadcrumb={["Dashboard"]}
