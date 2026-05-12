@@ -32,13 +32,19 @@ export default function Sidebar(){
 
         <li>
           <NavLink to="/orders" className={menuClass}>
-            <FaClipboardList /> Order List
+            <FaClipboardList /> Order 
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/customers" className={menuClass}>
-            <FaClipboardList /> Customers Detail
+            <FaClipboardList /> Customers 
+          </NavLink>
+        </li>
+
+                <li>
+          <NavLink to="/product" className={menuClass}>
+            <FaClipboardList /> Produk Detail
           </NavLink>
         </li>
 
