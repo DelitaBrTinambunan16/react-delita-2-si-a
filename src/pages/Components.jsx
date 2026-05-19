@@ -23,10 +23,9 @@ export default function Components() {
       {/* HEADER */}
       <PageHeader
         title="Components"
-        breadcrumb={["Dashboard", "Order List"]}
+        breadcrumb={["Dashboard", "Components"]}
       />
 
-      {/* 1. BASIC COMPONENT */}
       <section className="mt-6 bg-white rounded-xl shadow p-6 space-y-4">
 
         {/* Button */}
@@ -63,7 +62,6 @@ export default function Components() {
 
       </section>
 
-      {/* 2. LAYOUT COMPONENT */}
       <section className="mt-6 bg-white rounded-xl shadow p-6 space-y-4">
 
         <div>
@@ -80,7 +78,6 @@ export default function Components() {
 
       </section>
 
-      {/* 3. DATA DISPLAY COMPONENT */}
       <section className="mt-6 bg-white rounded-xl shadow p-6 space-y-4">
 
         {/* Card */}
