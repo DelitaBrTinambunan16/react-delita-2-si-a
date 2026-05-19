@@ -42,7 +42,13 @@ export default function Sidebar(){
           </NavLink>
         </li>
 
-                <li>
+        <li>
+          <NavLink to="/components" className={menuClass}>
+            <FaClipboardList /> Components
+          </NavLink>
+        </li>
+
+        <li>
           <NavLink to="/product" className={menuClass}>
             <FaClipboardList /> Produk Detail
           </NavLink>

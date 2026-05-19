@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaBell, FaSearch } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
+import Avatar from "./Avatar";
 
 export default function Header() {
   return (
@@ -66,11 +67,13 @@ export default function Header() {
             Hello, <b>Delita Br Tinambunan</b>
           </span>
 
-    <img
+    {/* <img
   src="https://i.pravatar.cc/40"
   alt="profile"
-  className="w-10 h-10 rounded-full"
-/>
+  className="w-10 h-10 rounded-full" */}
+{/* /> */}
+
+<Avatar name="Delita Br Tinambunan"/>
         </div>
 
       </div>

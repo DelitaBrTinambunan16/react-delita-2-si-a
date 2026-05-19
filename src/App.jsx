@@ -15,6 +15,7 @@ import Loading from "./components/Loading";
 import { Suspense } from "react";
 import ProductDetail from "./pages/ProdukDetail";
 import CustomerDetail from "./pages/CustomerDetail";
+import Components from "./pages/Components";
 // import MainLayout from "./layouts/MainLayout";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
   const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
   const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
+  
 
   return (
     <Suspense fallback={<Loading />}>
@@ -39,7 +41,9 @@ function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/product" element={<Produk/>}/>
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/components" element={<Components />} />
           <Route path="/customers/:id" element={<CustomerDetail />} />
+      
 
           <Route
             path="/error-400"
