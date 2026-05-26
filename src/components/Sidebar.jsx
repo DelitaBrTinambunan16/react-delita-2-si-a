@@ -54,6 +54,12 @@ export default function Sidebar(){
           </NavLink>
         </li>
 
+                <li>
+          <NavLink to="/FiturXyz" className={menuClass}>
+            <FaClipboardList /> Fitur Xyz
+          </NavLink>
+        </li>
+
         {/* ERROR MENU */}
         <li>
           <NavLink to="/error-400" className={menuClass}>

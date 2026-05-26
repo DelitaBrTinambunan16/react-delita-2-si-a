@@ -76,6 +76,7 @@ const Dashboard = () => {
             <div className="bg-purple-100 p-3 rounded-full">
               <FaClock className="text-purple-500 text-2xl" />
             </div>
+            
             <div>
               <h2 className="font-bold text-lg">18</h2>
               <p className="text-gray-400 text-sm">Pending Orders</p>
