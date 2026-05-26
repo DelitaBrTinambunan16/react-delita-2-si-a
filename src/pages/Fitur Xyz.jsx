@@ -1,6 +1,7 @@
 import PageHeader from "../components/PageHeader";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
-// Data 10 Isu Terhangat di Indonesia (Mei 2026)
 const daftarIsu = [
     { id: 1, isu: "Evaluasi & Standarisasi Anggaran Makan Bergizi Gratis (MBG)", kategori: "Kebijakan Publik", status: "Kritis", tren: "Naik" },
     { id: 2, isu: "Fluktuasi Nilai Tukar Rupiah & Pembatasan Threshold Valas", kategori: "Ekonomi", status: "Waspada", tren: "Naik" },
@@ -20,7 +21,52 @@ export default function FiturXyz() {
             <PageHeader
                 title="Fitur Xyz"
                 breadcrumb={["Dashboard", "Fitur Xyz"]}
-            />
+            >
+                <Button className="bg-green-500 hover:bg-green-600 text-white">+ Add Isu</Button>
+            </PageHeader>
+
+            <div className="flex gap-2 my-4">
+                <Button variant="outline">Batal</Button>
+                <Button variant="ghost">Batal</Button>
+                <Button variant="destructive">Batal</Button>
+            </div>
+
+            {/* CARD */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Total Isu</CardTitle>
+                        <CardDescription>Jumlah isu yang dipantau</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold text-gray-800">{daftarIsu.length}</p>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Status Kritis</CardTitle>
+                        <CardDescription>Isu dengan level kritis</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold text-red-600">
+                            {daftarIsu.filter(i => i.status === "Kritis").length}
+                        </p>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Tren Naik</CardTitle>
+                        <CardDescription>Isu dengan tren meningkat</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold text-amber-600">
+                            {daftarIsu.filter(i => i.tren === "Naik").length}
+                        </p>
+                    </CardContent>
+                </Card>
+            </div>
             
             <div className="mt-6 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
                 <div className="p-5 border-b border-gray-100 bg-gray-50">
