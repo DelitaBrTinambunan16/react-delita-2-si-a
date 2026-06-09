@@ -1,3 +1,4 @@
+import { BiNote } from "react-icons/bi";
 import {
     MdDashboard,
     MdShoppingCart,
@@ -65,6 +66,12 @@ export default function Sidebar(){
         <li>
           <NavLink to="/FiturXyz" className={menuClass}>
             <MdTune size={18} /> <span>Fitur Xyz</span>
+          </NavLink>
+        </li>
+
+           <li>
+          <NavLink to="/notes" className={menuClass}>
+            <BiNote size={18} /> <span>Notes</span>
           </NavLink>
         </li>
 

@@ -17,7 +17,9 @@ import ProductDetail from "./pages/ProdukDetail";
 import CustomerDetail from "./pages/CustomerDetail";
 import Components from "./pages/Components";
 import FiturXyz from "./pages/Fitur Xyz";
+import Note from "./pages/Note";
 // import MainLayout from "./layouts/MainLayout";
+
 
 function App() {
   const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -33,6 +35,7 @@ function App() {
   const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
   const FiturZyz = React.lazy(() => import("./pages/Fitur Xyz"));
 
+
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
@@ -45,8 +48,8 @@ function App() {
           <Route path="/components" element={<Components />} />
           <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/FiturXyz" element={<FiturXyz/>} />
-      
-
+          <Route path="/notes" element={<Note/>} />
+          
           <Route
             path="/error-400"
             element={
